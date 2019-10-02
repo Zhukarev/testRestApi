@@ -2,8 +2,8 @@
 
 namespace app\modules\api\v1\controllers;
 
+use yii\data\ActiveDataProvider;
 use yii\rest\ActiveController;
-use app\models\Book;
 
 class BookController extends ActiveController
 {
@@ -13,6 +13,11 @@ class BookController extends ActiveController
 
     public function actionList()
     {
-        return Book::find()->all();
+
+        return new ActiveDataProvider([
+            'query' => \app\modules\api\v1\models\Book::find()
+        ]);
     }
+
+
 }
